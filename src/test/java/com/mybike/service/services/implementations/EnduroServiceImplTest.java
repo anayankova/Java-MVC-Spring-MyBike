@@ -1,13 +1,19 @@
 package com.mybike.service.services.implementations;
 
 import com.mybike.data.entities.User;
+import com.mybike.data.entities.enduro_enum.Brakes;
+import com.mybike.data.entities.enduro_enum.Fork;
+import com.mybike.data.entities.enduro_enum.Frame;
+import com.mybike.data.entities.enduro_enum.Tires;
 import com.mybike.data.repositories.EnduroRepository;
 import com.mybike.data.repositories.UsersRepository;
 import com.mybike.service.factories.EnduroFactory;
+import com.mybike.service.models.EnduroCreateServiceModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
+import org.junit.jupiter.api.Assertions;
 
 class EnduroServiceImplTest {
 
@@ -31,11 +37,16 @@ class EnduroServiceImplTest {
     }
 
     @Test
-    void createEnduroForUser() {
+    public void createEnduroForUser() {
         User user = new User();
         user.setUsername("Martin");
         Mockito.when(usersRepository.findByUsernameContains(user.getUsername()))
                 .thenReturn(user);
+        EnduroCreateServiceModel enduroCreateServiceModel = new EnduroCreateServiceModel("enduroSome",
+                Frame.SCOTT, Fork.FOX, Tires.TIRES26, Brakes.MAGURAMT7);
+        service.create(user.getUsername(), enduroCreateServiceModel);
+        Assertions.assertEquals(1, user.getEnduroBikes().size());
+
     }
 
     @Test
