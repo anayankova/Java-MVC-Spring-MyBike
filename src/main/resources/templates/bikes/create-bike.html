@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{_shared/head}"/>
+<body>
+<th:block th:include="~{_shared/header}"/>
+<main>
+    <div class="container">
+        <h1>.</h1>
+        <h1 class="text-center mt-3">Choose Type</h1>
+        <form class="mx-auto w-100 bg-blur" action="/bikes/create" method="post">
+            <div class="form-group">
+                <div class="row">
+
+                    <a th:href="@{/bikes/create/enduro}"
+                       class="btn badge" id="bike-type1">
+                        <h3 class="text-center text-dark">Create DownHill Bike</h3>
+                        <img src="/img/dh-bike.jpg" class="border border-secondary" alt="dh image"
+                             height="230" width="360"/>
+                    </a>
+
+                    <a th:href="@{/bikes/create/enduro}"
+                       class="btn badge" id="bike-type2">
+                        <h3 class="text-center text-dark">Create Enduro Bike</h3>
+                        <img src="/img/enduro-bike.jpg" class="border border-secondary" alt="enduro image"
+                             height="230" width="360"/>
+                    </a>
+
+                    <a th:href="@{/bikes/create/enduro}"
+                       class="btn badge" id="bike-type3">
+                        <h3 class="text-center text-dark">Create CrossCountry Bike</h3>
+                        <img src="/img/xc-bike.jpg" class="border border-secondary" alt="xc image"
+                             height="230" width="360"/>
+                    </a>
+
+                    <a th:href="@{/bikes/create/enduro}"
+                       class="btn badge" id="bike-type4">
+                        <h3 class="text-center text-dark">Create BMX Bike</h3>
+                        <img src="/img/bmx-bike.jpg" class="border border-secondary" alt="bmx image"
+                             height="230" width="360"/>
+                    </a>
+
+                    <a th:href="@{/bikes/create/enduro}"
+                       class="btn badge" id="bike-type5">
+                        <h3 class="text-center text-dark">Create Road Bike</h3>
+                        <img src="/img/road-bike.jpg" class="border border-secondary" alt="road image"
+                             height="230" width="360"/>
+                    </a>
+
+                </div>
+            </div>
+        </form>
+        <h1>.</h1>
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

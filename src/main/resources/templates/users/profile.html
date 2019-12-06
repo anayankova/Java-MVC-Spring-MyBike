@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{_shared/head}"/>
+<body>
+<th:block th:include="~{_shared/header}"/>
+<main>
+    <div class="container">
+        <h1>.</h1>
+        <h1 class="text-center font-weight-bold text-black mt-3">Profile</h1>
+        <div class="bg-blur">
+            <div class="col m-3 flex-column text-center">
+                <img src="/img/profile.png" class="border border-secondary"
+                     height="200" width="200" alt="image">
+                <h2>Name: <span th:text="${session.user.username}"></span></h2>
+                <h2>Email: <span th:text="${session.user.username}"></span></h2>
+            </div>
+        </div>
+        <h1>.</h1>
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

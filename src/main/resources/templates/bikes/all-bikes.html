@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{_shared/head}"/>
+<body>
+<th:block th:include="~{_shared/header}"/>
+<main>
+    <div class="container">
+        <h1>.</h1>
+        <h1 class="text-center mt-3">My Bikes</h1>
+        <hr style="width: 50%"/>
+
+        <h1 class="text-center mb-3">Enduro Bikes</h1>
+        <th:block th:each="enduro : ${endurobikes}">
+            <div class="bg-blur">
+                <div class="row m-3 d-flex">
+                    <img src="/img/enduro-bike.jpg" class="border border-secondary" alt="enduro image"
+                         height="230" width="360"/>
+                    <div class="row ml-5 d-flex flex-column">
+                        <h2>Name: <span th:text="${enduro.name}"></span></h2>
+                        <h4>Frame: <span th:text="${enduro.frame}"></span></h4>
+                        <h4>Fork: <span th:text="${enduro.fork}"></span></h4>
+                        <h4>Tires: <span th:text="${enduro.tires}"></span></h4>
+                        <h4>Brakes: <span th:text="${enduro.brakes}"></span></h4>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
+        <h1>.</h1>
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<header>
+    <div id="myHeader">
+        <nav class="navbar bg-dark navbar-expand-lg navbar-background bg-dark ">
+            <a class="navbar-brand text-white active h5" href="/bikes">Bikes</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                <ul class="navbar-nav row">
+
+                    <th:block th:if="${session.user == null || session.user.username == null}">
+                        <li class="nav-item col-md-4">
+                            <a class="nav-link text-white active h5" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item col-md-4">
+                            <a class="nav-link text-white active h5" href="/users/login">Login</a>
+                        </li>
+                        <li class="nav-item col-md-4">
+                            <a class="nav-link text-white active h5" href="/users/register">Register</a>
+                        </li>
+                    </th:block>
+
+                    <th:block th:unless="${session.user == null || session.user.username == null}">
+                        <li class="nav-item mr-2">
+                            <a class="nav-link text-white active h5" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link text-white active h5" href="/bikes/all">My Bikes</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link text-white active h5" href="/bikes/create">Create Bike</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link text-white active h5" href="/users/profile">Profile</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <form th:action="@{/users/logout?login}" th:method="post">
+                                <input type="hidden" name="_csrf" value="80417983-fe8b-45c7-963e-31f6915a1560">
+                                <a class="nav-link text-white active h5" th:href="@{/users/logout}">Logout</a>
+                            </form>
+                        </li>
+                    </th:block>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>

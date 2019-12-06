@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{_shared/head}"/>
+<body>
+<th:block th:include="~{_shared/header}"/>
+<main>
+
+    <th:block th:if="${session.user == null || session.user.username == null}">
+    <div class="container">
+        <h1>.</h1>
+        <h1 class="mt-3">Welcome to My Bike</h1>
+        <img src="/img/mybike.jpg" class="border border-secondary" alt="bike image"
+             height="230"
+             width="230"/>
+        <hr class="my-3"/>
+        <p class="h4">You can find different type of bikes and make the best one.</p>
+        <hr class="my-3"/>
+    </div>
+    </th:block>
+
+    <th:block th:unless="${session.user == null || session.user.username == null}">
+        <div class="container">
+            <h1>.</h1>
+            <h1 class="mt-3">Welcome to My Bike, [[${session.user.username}]].</h1>
+            <img src="/img/mybike.jpg" class="border border-secondary" alt="bike image"
+                 height="230"
+                 width="230"/>
+            <hr class="my-3"/>
+            <p class="h4">You can find different type of bikes and make the best one.</p>
+            <hr class="my-3"/>
+        </div>
+    </th:block>
+
+</main>
+
+<th:block th:include="~{_shared/footer}" />
+</body>
+</html>
