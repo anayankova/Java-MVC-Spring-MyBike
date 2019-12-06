@@ -19,17 +19,17 @@ import java.util.stream.Collectors;
 @Service
 public class EnduroServiceImpl implements EnduroService {
 
-    private final EnduroRepository enduroRepository;
     private final EnduroFactory enduroFactory;
+    private final EnduroRepository enduroRepository;
     private final UsersRepository usersRepository;
     private final ModelMapper mapper;
 
-    public EnduroServiceImpl(EnduroFactory enduroRepository,
-                             UsersRepository enduroFactory,
-                             EnduroRepository usersRepository,
+    public EnduroServiceImpl(EnduroFactory enduroFactory,
+                             EnduroRepository enduroRepository,
+                             UsersRepository usersRepository,
                              ModelMapper mapper) {
-        this.enduroRepository = enduroRepository;
         this.enduroFactory = enduroFactory;
+        this.enduroRepository = enduroRepository;
         this.usersRepository = usersRepository;
         this.mapper = mapper;
     }

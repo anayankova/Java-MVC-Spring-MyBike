@@ -12,20 +12,18 @@ import org.modelmapper.ModelMapper;
 class EnduroServiceImplTest {
 
     EnduroFactory enduroFactory;
-    UsersRepository usersRepository;
     EnduroRepository enduroRepository;
+    UsersRepository usersRepository;
 
     EnduroServiceImpl service;
 
     @BeforeEach
     void setupTest() {
         enduroFactory = Mockito.mock(EnduroFactory.class);
-        usersRepository = Mockito.mock(UsersRepository.class);
         enduroRepository = Mockito.mock(EnduroRepository.class);
+        usersRepository = Mockito.mock(UsersRepository.class);
         ModelMapper mapper = new ModelMapper();
-        service = new EnduroServiceImpl(enduroFactory, usersRepository, enduroRepository, mapper);
-
-
+        service = new EnduroServiceImpl(enduroFactory, enduroRepository, usersRepository, mapper);
     }
 
     @Test
