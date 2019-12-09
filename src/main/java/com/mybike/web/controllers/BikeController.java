@@ -2,6 +2,7 @@ package com.mybike.web.controllers;
 
 import com.mybike.service.services.EnduroService;
 import com.mybike.web.controllers.base.BaseController;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +13,10 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/bikes")
+@AllArgsConstructor
 public class BikeController extends BaseController {
 
     private final EnduroService enduroService;
-
-    public BikeController(EnduroService enduroService) {
-        this.enduroService = enduroService;
-    }
 
     @GetMapping("")
     public ModelAndView getBikes() {

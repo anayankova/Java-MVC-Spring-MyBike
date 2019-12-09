@@ -10,26 +10,18 @@ import com.mybike.service.models.UserServiceModel;
 import com.mybike.service.services.HashService;
 import com.mybike.service.services.UserService;
 import com.mybike.service.services.UserValidationService;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserValidationService userValidationService;
     private final UsersRepository usersRepository;
     private final ModelMapper mapper;
     private final HashService hashService;
-
-    public UserServiceImpl(UserValidationService userValidationService,
-                           UsersRepository usersRepository,
-                           ModelMapper mapper,
-                           HashService hashService) {
-        this.userValidationService = userValidationService;
-        this.usersRepository = usersRepository;
-        this.mapper = mapper;
-        this.hashService = hashService;
-    }
 
     @Override
     public void register(RegisterUserServiceModel model) throws Exception {

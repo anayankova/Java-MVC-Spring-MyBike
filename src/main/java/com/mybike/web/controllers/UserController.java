@@ -5,6 +5,7 @@ import com.mybike.service.models.RegisterUserServiceModel;
 import com.mybike.service.services.UserService;
 import com.mybike.web.controllers.base.BaseController;
 import com.mybike.web.models.RegisterUserModel;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,15 +16,11 @@ import java.security.Principal;
 
 @Controller
 @RequestMapping("/users")
+@AllArgsConstructor
 public class UserController extends BaseController {
 
     private final UserService userService;
     private final ModelMapper mapper;
-
-    public UserController(UserService userService, ModelMapper mapper) {
-        this.userService = userService;
-        this.mapper = mapper;
-    }
 
     @GetMapping("/register")
     public ModelAndView getRegister() {
@@ -55,7 +52,5 @@ public class UserController extends BaseController {
         LoginUserServiceModel loginUserServiceModel = userService.login(serviceModel);
         session.setAttribute("user", loginUserServiceModel);
         return super.redirect("/home");
-
     }
-
 }

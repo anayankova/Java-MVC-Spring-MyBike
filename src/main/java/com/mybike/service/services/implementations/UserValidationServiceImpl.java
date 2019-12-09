@@ -3,16 +3,14 @@ package com.mybike.service.services.implementations;
 import com.mybike.data.repositories.UsersRepository;
 import com.mybike.service.models.RegisterUserServiceModel;
 import com.mybike.service.services.UserValidationService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class UserValidationServiceImpl implements UserValidationService {
 
     private final UsersRepository usersRepository;
-
-    public UserValidationServiceImpl(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
-    }
 
     @Override
     public boolean isValid(RegisterUserServiceModel user) {

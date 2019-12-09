@@ -46,7 +46,6 @@ class EnduroServiceImplTest {
                 Frame.SCOTT, Fork.FOX, Tires.TIRES26, Brakes.MAGURAMT7);
         service.create(user.getUsername(), enduroCreateServiceModel);
         Assertions.assertEquals(1, user.getEnduroBikes().size());
-
     }
 
     @Test

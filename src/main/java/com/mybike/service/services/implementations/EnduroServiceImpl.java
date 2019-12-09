@@ -8,6 +8,7 @@ import com.mybike.service.factories.EnduroFactory;
 import com.mybike.service.models.EnduroCreateServiceModel;
 import com.mybike.service.models.EnduroServiceModel;
 import com.mybike.service.services.EnduroService;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -17,22 +18,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class EnduroServiceImpl implements EnduroService {
 
     private final EnduroFactory enduroFactory;
     private final EnduroRepository enduroRepository;
     private final UsersRepository usersRepository;
     private final ModelMapper mapper;
-
-    public EnduroServiceImpl(EnduroFactory enduroFactory,
-                             EnduroRepository enduroRepository,
-                             UsersRepository usersRepository,
-                             ModelMapper mapper) {
-        this.enduroFactory = enduroFactory;
-        this.enduroRepository = enduroRepository;
-        this.usersRepository = usersRepository;
-        this.mapper = mapper;
-    }
 
     @Override
     public Enduro create(String username, EnduroCreateServiceModel model) {
