@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface EnduroService {
-    Enduro create(String username, EnduroCreateServiceModel model);
+    Enduro create(String username, EnduroCreateServiceModel model) throws Exception;
 
     Set<Enduro> getAllEnduroBikesByUsername(String username);
 

@@ -36,7 +36,7 @@ public class EnduroContoller extends BaseController {
     }
 
     @PostMapping("/create/enduro")
-    public ModelAndView createEnduro(@ModelAttribute EnduroCreateModel enduro, HttpSession session) {
+    public ModelAndView createEnduro(@ModelAttribute EnduroCreateModel enduro, HttpSession session) throws Exception {
         String username = getUsername(session);
         EnduroCreateServiceModel serviceModel = mapper.map(enduro, EnduroCreateServiceModel.class);
         enduroService.create(username, serviceModel);

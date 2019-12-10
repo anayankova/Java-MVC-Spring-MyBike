@@ -26,8 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(RegisterUserServiceModel model) throws Exception {
         if (!userValidationService.isValid(model)) {
-            // todo: empty parameters
-            throw new Exception("Invalid user");
+            throw new Exception(Constants.USER_INVALID);
         }
         User user = mapper.map(model, User.class);
         user.setPassword(hashService.hash(user.getPassword()));
@@ -40,7 +39,7 @@ public class UserServiceImpl implements UserService {
         return usersRepository
                 .findByUsernameAndPassword(model.getUsername(), passwordHash)
                 .map(user -> new LoginUserServiceModel(model.getUsername(), passwordHash))
-                .orElseThrow(() -> new UserNotFoundException("Invalid user"));
+                .orElseThrow(() -> new UserNotFoundException(Constants.USER_NOT_FOUND));
     }
 
     @Override

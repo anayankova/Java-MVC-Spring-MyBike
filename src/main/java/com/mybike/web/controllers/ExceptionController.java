@@ -7,10 +7,14 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 public class ExceptionController {
 
-    @ExceptionHandler(Throwable.class)
+    @ExceptionHandler({Throwable.class})
     public ModelAndView handleException(Throwable exception) {
         ModelAndView modelAndView = new ModelAndView("error");
-        modelAndView.addObject("message", exception.getMessage());
+        Throwable throwable = exception;
+        while (throwable.getCause() != null){
+            throwable = throwable.getCause();
+        }
+        modelAndView.addObject("message", throwable.getMessage());
         return modelAndView;
     }
 }

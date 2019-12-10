@@ -4,6 +4,7 @@ import com.mybike.data.entities.Enduro;
 import com.mybike.data.entities.User;
 import com.mybike.data.repositories.EnduroRepository;
 import com.mybike.data.repositories.UsersRepository;
+import com.mybike.error.Constants;
 import com.mybike.service.factories.EnduroFactory;
 import com.mybike.service.models.EnduroCreateServiceModel;
 import com.mybike.service.models.EnduroServiceModel;
@@ -27,7 +28,10 @@ public class EnduroServiceImpl implements EnduroService {
     private final ModelMapper mapper;
 
     @Override
-    public Enduro create(String username, EnduroCreateServiceModel model) {
+    public Enduro create(String username, EnduroCreateServiceModel model) throws Exception {
+        if(model.getName().isEmpty() || model.getName() == null) {
+            throw new Exception(Constants.ENDURO_INVALID);
+        }
         User user = usersRepository.findByUsernameContains(username);
         Enduro enduro = enduroFactory.create(model.getName(), model.getFrame(),
                 model.getFork(), model.getTires(), model.getBrakes());

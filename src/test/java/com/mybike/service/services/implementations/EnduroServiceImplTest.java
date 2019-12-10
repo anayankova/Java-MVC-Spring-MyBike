@@ -13,7 +13,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
-import org.junit.jupiter.api.Assertions;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class EnduroServiceImplTest {
 
@@ -37,7 +39,7 @@ class EnduroServiceImplTest {
     }
 
     @Test
-    public void createEnduroForUser() {
+    public void createEnduroForUser() throws Exception {
         User user = new User();
         user.setUsername("Martin");
         Mockito.when(usersRepository.findByUsernameContains(user.getUsername()))
@@ -45,7 +47,7 @@ class EnduroServiceImplTest {
         EnduroCreateServiceModel enduroCreateServiceModel = new EnduroCreateServiceModel("enduroSome",
                 Frame.SCOTT, Fork.FOX, Tires.TIRES26, Brakes.MAGURAMT7);
         service.create(user.getUsername(), enduroCreateServiceModel);
-        Assertions.assertEquals(1, user.getEnduroBikes().size());
+        assertEquals(1, user.getEnduroBikes().size());
     }
 
     @Test
