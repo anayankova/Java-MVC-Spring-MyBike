@@ -47,11 +47,11 @@ public class EnduroServiceImpl implements EnduroService {
                 .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
-    @Override
-    public List<EnduroServiceModel> getAllEnduroBikes() {
-        return this.enduroRepository.findAll()
-                .stream()
-                .map(e -> this.mapper.map(e, EnduroServiceModel.class))
-                .collect(Collectors.toList());
-    }
+    //@Override
+    //public List<EnduroServiceModel> getAllEnduroBikes() {
+    //    return this.enduroRepository.findAll()
+    //            .stream()
+    //            .map(e -> this.mapper.map(e, EnduroServiceModel.class))
+    //            .collect(Collectors.toList());
+    //}
 }

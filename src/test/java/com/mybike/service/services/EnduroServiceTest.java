@@ -15,6 +15,9 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.List;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EnduroServiceTest extends ServiceTestBase {
@@ -42,4 +45,21 @@ class EnduroServiceTest extends ServiceTestBase {
         assertEquals(enduroName, enduro.getName());
         assertEquals(user.getUsername(), enduro.getOwner().getUsername());
     }
+
+    @Test
+    void getAllEnduroBikesByUsername_whenUserExists_shouldReturnEnduroBikes() throws Exception {
+        User user = new User();
+        user.setUsername("Victor");
+        Mockito.when(usersRepository.findByUsernameContains(user.getUsername()))
+                .thenReturn(user);
+        String enduroName = "EnduroRace";
+        EnduroCreateServiceModel model = new EnduroCreateServiceModel(enduroName,
+                Frame.SCOTT, Fork.FOX, Tires.TIRES27, Brakes.SRAMCODER);
+        Enduro enduro = enduroService.create(user.getUsername(), model);
+        Mockito.when(enduroRepository.findAll()).thenReturn(List.of(enduro));
+        Set<Enduro> enduroBikes = enduroService.getAllEnduroBikesByUsername(user.getUsername());
+
+        assertEquals(1, enduroBikes.size());
+    }
+
 }

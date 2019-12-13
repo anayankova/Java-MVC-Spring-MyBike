@@ -12,5 +12,5 @@ public interface EnduroService {
 
     Set<Enduro> getAllEnduroBikesByUsername(String username);
 
-    List<EnduroServiceModel> getAllEnduroBikes();
+    //List<EnduroServiceModel> getAllEnduroBikes();
 }
