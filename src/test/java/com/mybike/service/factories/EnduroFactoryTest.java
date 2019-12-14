@@ -17,7 +17,7 @@ class EnduroFactoryTest extends ServiceTestBase {
     EnduroFactory factory;
 
     @Test
-    void create_shouldReturnEnduroWithDefaultProps() {
+    void createEnduroFactory_shouldReturnEnduroWithAttributes() {
         String name = "Enduro";
         Frame frame = Frame.SCOTT;
         Fork fork = Fork.FOX;

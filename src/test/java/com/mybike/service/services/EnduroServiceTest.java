@@ -32,7 +32,33 @@ class EnduroServiceTest extends ServiceTestBase {
     EnduroService enduroService;
 
     @Test
-    void createEnduroForUser_whenUserExists_shouldCreateEnduroForUser() throws Exception {
+    void createEnduroForUser_whenEnduroNameIsNull_shouldThrowException() {
+        User user = new User();
+        user.setUsername("Martin");
+        Mockito.when(usersRepository.findByUsernameContains(user.getUsername()))
+                .thenReturn(user);
+        String enduroName = null;
+        EnduroCreateServiceModel model = new EnduroCreateServiceModel(enduroName,
+                Frame.SCOTT, Fork.FOX, Tires.TIRES27, Brakes.SRAMCODER);
+
+        assertThrows(Exception.class, () -> enduroService.create(user.getUsername(), model));
+    }
+
+    @Test
+    void createEnduroForUser_whenEnduroNameIsEmpty_shouldThrowException() {
+        User user = new User();
+        user.setUsername("Martin");
+        Mockito.when(usersRepository.findByUsernameContains(user.getUsername()))
+                .thenReturn(user);
+        String enduroName = "";
+        EnduroCreateServiceModel model = new EnduroCreateServiceModel(enduroName,
+                Frame.SCOTT, Fork.FOX, Tires.TIRES27, Brakes.SRAMCODER);
+
+        assertThrows(Exception.class, () -> enduroService.create(user.getUsername(), model));
+    }
+
+    @Test
+    void createEnduroForUser_whenEnduroHasName_shouldCreateEnduroForUser() throws Exception {
         User user = new User();
         user.setUsername("Martin");
         Mockito.when(usersRepository.findByUsernameContains(user.getUsername()))
