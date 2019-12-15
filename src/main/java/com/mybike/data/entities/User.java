@@ -2,7 +2,6 @@ package com.mybike.data.entities;
 
 import com.mybike.data.entities.base.BaseEntity;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -32,15 +31,19 @@ public class User extends BaseEntity implements UserDetails {
     private Set<Enduro> enduroBikes;
 
     @Column
+    @Transient
     private boolean isAccountNonExpired;
 
     @Column
+    @Transient
     private boolean isAccountNonLocked;
 
     @Column
+    @Transient
     private boolean isCredentialsNonExpired;
 
     @Column
+    @Transient
     private boolean isEnabled;
 
     @ManyToMany(fetch = FetchType.EAGER)

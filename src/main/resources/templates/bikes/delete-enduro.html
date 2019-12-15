@@ -13,9 +13,8 @@
         <h1 class="text-center mt-3">My Bikes</h1>
         <hr style="width: 50%"/>
 
-        <h1 class="text-center mb-3">Enduro Bikes</h1>
-        <th:block th:each="enduro : ${endurobikes}">
-            <div class="bg-blur">
+        <h1 class="text-center mb-3">Delete Enduro Bike</h1>
+            <form class="mx-auto w-100 bg-blur" th:action="@{/bikes/delete/enduro/{id}(id=${enduroId})}" method="post">
                 <div class="row m-3 d-flex">
                     <th:block th:if="${enduro.frame == enduro.frame.TREK}">
                         <img src="/img/enduro-bike.jpg" class="border border-secondary" alt="enduro image"
@@ -38,19 +37,11 @@
                     </div>
                     <div class="row ml-5 d-flex flex-column">
                         <div class="button-holder d-flex justify-content-center">
-                            <a th:href="@{/bikes/delete/enduro/{id}(id=${enduro.getId()})}">
-                                <button class="btn badge-dark mb-3" type="submit">Delete Enduro Bike</button>
-                            </a>
-                        </div>
-                        <div class="button-holder d-flex justify-content-center">
-                            <a th:href="@{/bikes/edit/enduro/{id}(id=${enduro.getId()})}">
-                                <button class="btn badge-dark mb-3" type="submit">Edit Enduro Bike</button>
-                            </a>
+                            <button class="btn badge-dark mb-3" type="submit">Delete Enduro Bike</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </th:block>
+            </form>
 
         <div class="mb-5"></div>
     </div>

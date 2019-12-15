@@ -1,17 +1,14 @@
 package com.mybike.web.controllers;
 
-import com.mybike.service.models.EnduroCreateServiceModel;
+import com.mybike.service.models.EnduroServiceModel;
 import com.mybike.service.services.EnduroService;
-import com.mybike.service.services.UserService;
 import com.mybike.web.controllers.base.BaseController;
 import com.mybike.web.models.EnduroCreateModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
@@ -22,7 +19,6 @@ import java.security.Principal;
 public class EnduroContoller extends BaseController {
 
     private final EnduroService enduroService;
-    private final UserService userService;
     private final ModelMapper mapper;
 
     @GetMapping("/enduro")
@@ -38,8 +34,43 @@ public class EnduroContoller extends BaseController {
     @PostMapping("/create/enduro")
     public ModelAndView createEnduro(@ModelAttribute EnduroCreateModel enduro, Principal principal) throws Exception {
         String username = principal.getName();
-        EnduroCreateServiceModel serviceModel = mapper.map(enduro, EnduroCreateServiceModel.class);
-        enduroService.create(username, serviceModel);
+        EnduroServiceModel serviceModel = mapper.map(enduro, EnduroServiceModel.class);
+        enduroService.createEnduro(username, serviceModel);
         return super.redirect("/bikes/all");
     }
+
+    @GetMapping("/delete/enduro/{id}")
+    public String deleteEnduro(@PathVariable Long id, Model model) throws Exception {
+        EnduroServiceModel enduroServiceModel = this.enduroService.findEnduroById(id);
+        model.addAttribute("enduro", enduroServiceModel);
+        model.addAttribute("enduroId", id);
+
+        return "bikes/delete-enduro";
+    }
+
+    @PostMapping("/delete/enduro/{id}")
+    public ModelAndView deleteEnduroConfirm(@PathVariable Long id) throws Exception {
+        this.enduroService.deleteEnduro(id);
+
+        return super.redirect("/bikes/all");
+    }
+
+    @GetMapping("/edit/enduro/{id}")
+    public String editEnduro(@PathVariable Long id, Model model) throws Exception {
+        EnduroServiceModel enduroServiceModel = this.enduroService.findEnduroById(id);
+        model.addAttribute("enduro", enduroServiceModel);
+        model.addAttribute("enduroId", id);
+
+        return "bikes/edit-enduro";
+
+    }
+
+    @PostMapping("/edit/enduro/{id}")
+    public ModelAndView editEnduroConfirm(@PathVariable Long id,
+                                          @ModelAttribute EnduroCreateModel model) throws Exception {
+        this.enduroService.editEnduro( id, this.mapper.map(model, EnduroServiceModel.class));
+
+        return super.redirect("/bikes/all");
+    }
+
 }

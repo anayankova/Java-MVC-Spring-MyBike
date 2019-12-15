@@ -6,7 +6,6 @@ import com.mybike.data.repositories.EnduroRepository;
 import com.mybike.data.repositories.UsersRepository;
 import com.mybike.error.Constants;
 import com.mybike.service.factories.EnduroFactory;
-import com.mybike.service.models.EnduroCreateServiceModel;
 import com.mybike.service.models.EnduroServiceModel;
 import com.mybike.service.services.EnduroService;
 import lombok.AllArgsConstructor;
@@ -14,7 +13,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -28,7 +26,14 @@ public class EnduroServiceImpl implements EnduroService {
     private final ModelMapper mapper;
 
     @Override
-    public Enduro create(String username, EnduroCreateServiceModel model) throws Exception {
+    public EnduroServiceModel findEnduroById(Long id) throws Exception {
+        return this.enduroRepository.findById(id)
+                .map(e -> this.mapper.map(e, EnduroServiceModel.class))
+                .orElseThrow(() -> new Exception(Constants.USERID_NOT_FOUND));
+    }
+
+    @Override
+    public Enduro createEnduro(String username, EnduroServiceModel model) throws Exception {
         if(model.getName().isEmpty() || model.getName() == null) {
             throw new Exception(Constants.ENDURO_INVALID);
         }
@@ -38,6 +43,25 @@ public class EnduroServiceImpl implements EnduroService {
         enduro.setOwner(user);
         enduroRepository.save(enduro);
         return enduro;
+    }
+
+    @Override
+    public void deleteEnduro(Long id) throws Exception {
+        Enduro enduro = this.enduroRepository.findById(id)
+                .orElseThrow(() -> new Exception(Constants.ENDUROID_NOT_FOUND));
+        this.enduroRepository.delete(enduro);
+    }
+
+    @Override
+    public EnduroServiceModel editEnduro(Long id, EnduroServiceModel model) throws Exception {
+        Enduro enduro = this.enduroRepository.findById(id)
+                .orElseThrow(() -> new Exception(Constants.ENDUROID_NOT_FOUND));
+        enduro.setName(model.getName());
+        enduro.setFrame(model.getFrame());
+        enduro.setFork(model.getFork());
+        enduro.setTires(model.getTires());
+        enduro.setBrakes(model.getBrakes());
+        return this.mapper.map(this.enduroRepository.save(enduro), EnduroServiceModel.class);
     }
 
     @Override
