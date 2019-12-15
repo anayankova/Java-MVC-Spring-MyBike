@@ -15,8 +15,8 @@
             <div class="col m-3 flex-column text-center">
                 <img src="/img/profile.png" class="border border-secondary"
                      height="200" width="200" alt="image">
-                <h2>Name: <span th:text="${session.user.username}"></span></h2>
-                <h2>Email: <span th:text="${session.user.username}"></span></h2>
+                <h2>Name: <span th:text="${model.username}"></span></h2>
+                <h2>Email: <span th:text="${model.email}"></span></h2>
             </div>
         </div>
     </div>

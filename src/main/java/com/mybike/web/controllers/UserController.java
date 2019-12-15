@@ -5,9 +5,11 @@ import com.mybike.service.models.RegisterUserServiceModel;
 import com.mybike.service.services.UserService;
 import com.mybike.web.controllers.base.BaseController;
 import com.mybike.web.models.RegisterUserModel;
+import com.mybike.web.models.UserProfileModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,10 +35,10 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/profile")
-    public ModelAndView getProfile(Principal principal, ModelAndView modelAndView) {
-        //modelAndView.addObject("model", this.mapper
-                //.map(this.userService.findUserByUserName(principal.getName()), UserProfileModel.class));
-        return super.view("users/profile", modelAndView);
+    public String getProfile(Model model, Principal principal) {
+        model.addAttribute("model", this.mapper
+                .map(this.userService.findUserByUserName(principal.getName()), UserProfileModel.class));
+        return "users/profile";
     }
 
     @PostMapping("/register")
@@ -46,11 +48,11 @@ public class UserController extends BaseController {
         return super.redirect("/users/login");
     }
 
-    @PostMapping("/login")
-    public ModelAndView login(@ModelAttribute RegisterUserModel model, HttpSession session) throws Exception {
-        RegisterUserServiceModel serviceModel = mapper.map(model, RegisterUserServiceModel.class);
-        LoginUserServiceModel loginUserServiceModel = userService.login(serviceModel);
-        session.setAttribute("user", loginUserServiceModel);
-        return super.redirect("/home");
-    }
+    //@PostMapping("/login")
+    //public ModelAndView login(@ModelAttribute RegisterUserModel model, HttpSession session) throws Exception {
+    //    RegisterUserServiceModel serviceModel = mapper.map(model, RegisterUserServiceModel.class);
+    //    LoginUserServiceModel loginUserServiceModel = userService.login(serviceModel);
+    //    session.setAttribute("user", loginUserServiceModel);
+    //    return super.redirect("/home");
+    //}
 }

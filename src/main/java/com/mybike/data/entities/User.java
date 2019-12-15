@@ -4,19 +4,17 @@ import com.mybike.data.entities.base.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+public class User extends BaseEntity implements UserDetails {
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;
@@ -27,7 +25,29 @@ public class User extends BaseEntity {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @ManyToMany
+    private Set<Role> roles;
+
     @OneToMany(targetEntity = Enduro.class, mappedBy = "owner")
     private Set<Enduro> enduroBikes;
+
+    @Column
+    private boolean isAccountNonExpired;
+
+    @Column
+    private boolean isAccountNonLocked;
+
+    @Column
+    private boolean isCredentialsNonExpired;
+
+    @Column
+    private boolean isEnabled;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> authorities;
+
+    public User() {
+        authorities = new HashSet<>();
+    }
 
 }

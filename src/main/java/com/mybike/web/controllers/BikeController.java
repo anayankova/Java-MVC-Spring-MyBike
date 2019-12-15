@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/bikes")
@@ -29,8 +30,8 @@ public class BikeController extends BaseController {
     }
 
     @GetMapping("/all")
-    public String getAllBikesByUsername(Model model, HttpSession session) {
-        String username = getUsername(session);
+    public String getAllBikesByUsername(Model model, Principal principal) {
+        String username = principal.getName();
         model.addAttribute("endurobikes",
                 this.enduroService.getAllEnduroBikesByUsername(username));
         return "bikes/all-bikes";

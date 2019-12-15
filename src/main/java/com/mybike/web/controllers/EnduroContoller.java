@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/bikes")
@@ -36,8 +36,8 @@ public class EnduroContoller extends BaseController {
     }
 
     @PostMapping("/create/enduro")
-    public ModelAndView createEnduro(@ModelAttribute EnduroCreateModel enduro, HttpSession session) throws Exception {
-        String username = getUsername(session);
+    public ModelAndView createEnduro(@ModelAttribute EnduroCreateModel enduro, Principal principal) throws Exception {
+        String username = principal.getName();
         EnduroCreateServiceModel serviceModel = mapper.map(enduro, EnduroCreateServiceModel.class);
         enduroService.create(username, serviceModel);
         return super.redirect("/bikes/all");
