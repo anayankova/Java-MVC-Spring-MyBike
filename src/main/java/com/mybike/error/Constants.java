@@ -18,4 +18,8 @@ public class Constants {
 
     public final static String DHID_NOT_FOUND = "Downhill with this id does not exists";
 
+    public final static String XC_INVALID = "Invalid crosscountry";
+
+    public final static String XCID_NOT_FOUND = "Crosscountry with this id does not exists";
+
 }

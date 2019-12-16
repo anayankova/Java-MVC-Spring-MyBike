@@ -91,6 +91,35 @@
             </div>
         </th:block>
 
+        <h1 class="text-center mb-3">CrossCountry Bikes</h1>
+        <th:block th:each="xc : ${crosscountrybikes}">
+            <div class="bg-blur">
+                <div class="row m-3 d-flex">
+                    <img src="/img/xc-bike.jpg" class="border border-secondary" alt="xc image"
+                         height="230" width="360"/>
+                    <div class="row ml-5 d-flex flex-column">
+                        <h2>Name: <span th:text="${xc.name}"></span></h2>
+                        <h4>Frame: <span th:text="${xc.frame}"></span></h4>
+                        <h4>Fork: <span th:text="${xc.fork}"></span></h4>
+                        <h4>Tires: <span th:text="${xc.tires}"></span></h4>
+                        <h4>Brakes: <span th:text="${xc.brakes}"></span></h4>
+                    </div>
+                    <div class="row ml-5 d-flex flex-column">
+                        <div class="button-holder d-flex justify-content-center">
+                            <a th:href="@{/bikes/delete/crosscountry/{id}(id=${xc.getId()})}">
+                                <button class="btn badge-dark mb-3" type="submit">Delete CrossCountry Bike</button>
+                            </a>
+                        </div>
+                        <div class="button-holder d-flex justify-content-center">
+                            <a th:href="@{/bikes/edit/crosscountry/{id}(id=${xc.getId()})}">
+                                <button class="btn badge-dark mb-3" type="submit">Edit CrossCountry Bike</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
         <div class="mb-5"></div>
     </div>
 </main>
