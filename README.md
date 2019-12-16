@@ -16,7 +16,7 @@ Start creating bike:
 
 You have to give Name of your bike and select one from each field (frame, fork, tires, brakes).
 When your bike is ready, you will see it in My Bikes in header menu.
-You can create as many bikes as you want and all your bikes is listed in My Bikes.
+You can create as many bikes as you want and all your bikes will be listed in My Bikes.
 There is delete and edit logic to every bike.
 
 In Bikes in left corner of header menu, you can see only pictures of some bikes
