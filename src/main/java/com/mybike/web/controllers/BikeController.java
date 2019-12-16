@@ -1,5 +1,6 @@
 package com.mybike.web.controllers;
 
+import com.mybike.service.services.BmxService;
 import com.mybike.service.services.CrosscountryService;
 import com.mybike.service.services.DownhillService;
 import com.mybike.service.services.EnduroService;
@@ -21,6 +22,7 @@ public class BikeController extends BaseController {
     private final EnduroService enduroService;
     private final DownhillService downhillService;
     private final CrosscountryService crosscountryService;
+    private final BmxService bmxService;
 
     @GetMapping("")
     public ModelAndView getBikes() {
@@ -41,6 +43,8 @@ public class BikeController extends BaseController {
                 this.downhillService.getAllDownhillBikesByUsername(username));
         model.addAttribute("crosscountrybikes",
                 this.crosscountryService.getAllCrosscountryBikesByUsername(username));
+        model.addAttribute("bmxbikes",
+                this.bmxService.getAllBmxBikesByUsername(username));
         return "bikes/all-bikes";
     }
 

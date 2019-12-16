@@ -22,4 +22,8 @@ public class Constants {
 
     public final static String XCID_NOT_FOUND = "Crosscountry with this id does not exists";
 
+    public final static String BMX_INVALID = "Invalid bmx";
+
+    public final static String BMXID_NOT_FOUND = "Bmx with this id does not exists";
+
 }

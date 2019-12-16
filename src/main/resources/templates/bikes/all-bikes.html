@@ -120,6 +120,43 @@
             </div>
         </th:block>
 
+        <h1 class="text-center mb-3">BMX Bikes</h1>
+        <th:block th:each="bmx : ${bmxbikes}">
+            <div class="bg-blur">
+                <div class="row m-3 d-flex">
+                    <th:block th:if="${bmx.frame == bmx.frame.KINK}">
+                        <img src="/img/bmx-bike.jpg" class="border border-secondary" alt="bmx image"
+                             height="230" width="360"/>
+                    </th:block>
+                    <th:block th:if="${bmx.frame == bmx.frame.FRAMED}">
+                        <img src="/img/bmx-bike2.jpg" class="border border-secondary" alt="bmx image"
+                             height="230" width="360"/>
+                    </th:block>
+                    <th:block th:if="${bmx.frame == bmx.frame.PROTON}">
+                        <img src="/img/bmx-bike3.jpg" class="border border-secondary" alt="bmx image"
+                             height="230" width="360"/>
+                    </th:block>
+                    <div class="row ml-5 d-flex flex-column">
+                        <h2>Name: <span th:text="${bmx.name}"></span></h2>
+                        <h4>Frame: <span th:text="${bmx.frame}"></span></h4>
+                        <h4>Tires: <span th:text="${bmx.tires}"></span></h4>
+                    </div>
+                    <div class="row ml-5 d-flex flex-column">
+                        <div class="button-holder d-flex justify-content-center">
+                            <a th:href="@{/bikes/delete/bmx/{id}(id=${bmx.getId()})}">
+                                <button class="btn badge-dark mb-3" type="submit">Delete BMX Bike</button>
+                            </a>
+                        </div>
+                        <div class="button-holder d-flex justify-content-center">
+                            <a th:href="@{/bikes/edit/bmx/{id}(id=${bmx.getId()})}">
+                                <button class="btn badge-dark mb-3" type="submit">Edit BMX Bike</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
         <div class="mb-5"></div>
     </div>
 </main>
