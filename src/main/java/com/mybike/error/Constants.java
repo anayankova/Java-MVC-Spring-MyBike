@@ -12,8 +12,10 @@ public class Constants {
 
     public final static String ENDURO_INVALID = "Invalid enduro";
 
-    public final static String ENDURO_NOT_FOUND = "Enduro is not found";
-
     public final static String ENDUROID_NOT_FOUND = "Enduro with this id does not exists";
+
+    public final static String DH_INVALID = "Invalid downhill";
+
+    public final static String DHID_NOT_FOUND = "Downhill with this id does not exists";
 
 }

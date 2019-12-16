@@ -1,5 +1,6 @@
 package com.mybike.web.controllers;
 
+import com.mybike.service.services.DownhillService;
 import com.mybike.service.services.EnduroService;
 import com.mybike.web.controllers.base.BaseController;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import java.security.Principal;
 public class BikeController extends BaseController {
 
     private final EnduroService enduroService;
+    private final DownhillService downhillService;
 
     @GetMapping("")
     public ModelAndView getBikes() {
@@ -33,6 +35,8 @@ public class BikeController extends BaseController {
         String username = principal.getName();
         model.addAttribute("endurobikes",
                 this.enduroService.getAllEnduroBikesByUsername(username));
+        model.addAttribute("downhillbikes",
+                this.downhillService.getAllDownhillBikesByUsername(username));
         return "bikes/all-bikes";
     }
 

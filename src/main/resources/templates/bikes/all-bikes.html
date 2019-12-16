@@ -52,6 +52,45 @@
             </div>
         </th:block>
 
+        <h1 class="text-center mb-3">Downhill Bikes</h1>
+        <th:block th:each="dh : ${downhillbikes}">
+            <div class="bg-blur">
+                <div class="row m-3 d-flex">
+                    <th:block th:if="${dh.frame == dh.frame.SANTACRUZ}">
+                        <img src="/img/dh-bike4.jpg" class="border border-secondary" alt="dh image"
+                             height="230" width="360"/>
+                    </th:block>
+                    <th:block th:if="${dh.frame == dh.frame.EVIL}">
+                        <img src="/img/dh-bike2.jpg" class="border border-secondary" alt="dh image"
+                             height="230" width="360"/>
+                    </th:block>
+                    <th:block th:if="${dh.frame == dh.frame.YTTUES}">
+                        <img src="/img/dh-bike5.jpg" class="border border-secondary" alt="dh image"
+                             height="230" width="360"/>
+                    </th:block>
+                    <div class="row ml-5 d-flex flex-column">
+                        <h2>Name: <span th:text="${dh.name}"></span></h2>
+                        <h4>Frame: <span th:text="${dh.frame}"></span></h4>
+                        <h4>Fork: <span th:text="${dh.fork}"></span></h4>
+                        <h4>Tires: <span th:text="${dh.tires}"></span></h4>
+                        <h4>Brakes: <span th:text="${dh.brakes}"></span></h4>
+                    </div>
+                    <div class="row ml-5 d-flex flex-column">
+                        <div class="button-holder d-flex justify-content-center">
+                            <a th:href="@{/bikes/delete/downhill/{id}(id=${dh.getId()})}">
+                                <button class="btn badge-dark mb-3" type="submit">Delete Downhill Bike</button>
+                            </a>
+                        </div>
+                        <div class="button-holder d-flex justify-content-center">
+                            <a th:href="@{/bikes/edit/downhill/{id}(id=${dh.getId()})}">
+                                <button class="btn badge-dark mb-3" type="submit">Edit Downhill Bike</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
         <div class="mb-5"></div>
     </div>
 </main>

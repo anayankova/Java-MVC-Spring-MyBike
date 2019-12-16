@@ -29,7 +29,7 @@ public class EnduroServiceImpl implements EnduroService {
     public EnduroServiceModel findEnduroById(Long id) throws Exception {
         return this.enduroRepository.findById(id)
                 .map(e -> this.mapper.map(e, EnduroServiceModel.class))
-                .orElseThrow(() -> new Exception(Constants.USERID_NOT_FOUND));
+                .orElseThrow(() -> new Exception(Constants.ENDUROID_NOT_FOUND));
     }
 
     @Override

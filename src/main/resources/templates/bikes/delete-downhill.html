@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{_shared/head}"/>
+<body>
+<th:block th:include="~{_shared/header}"/>
+<main>
+    <div class="container">
+        <h1>.</h1>
+        <h1 class="text-center mt-3">My Bikes</h1>
+        <hr style="width: 50%"/>
+
+        <h1 class="text-center mb-3">Delete Downhill Bike</h1>
+        <form class="mx-auto w-100 bg-blur" th:action="@{/bikes/delete/downhill/{id}(id=${downhillId})}" method="post">
+            <div class="row m-3 d-flex">
+                <th:block th:if="${dh.frame == dh.frame.SANTACRUZ}">
+                    <img src="/img/dh-bike4.jpg" class="border border-secondary" alt="dh image"
+                         height="230" width="360"/>
+                </th:block>
+                <th:block th:if="${dh.frame == dh.frame.EVIL}">
+                    <img src="/img/dh-bike2.jpg" class="border border-secondary" alt="dh image"
+                         height="230" width="360"/>
+                </th:block>
+                <th:block th:if="${dh.frame == dh.frame.YTTUES}">
+                    <img src="/img/dh-bike5.jpg" class="border border-secondary" alt="dh image"
+                         height="230" width="360"/>
+                </th:block>
+                <div class="row ml-5 d-flex flex-column">
+                    <h2>Name: <span th:text="${dh.name}"></span></h2>
+                    <h4>Frame: <span th:text="${dh.frame}"></span></h4>
+                    <h4>Fork: <span th:text="${dh.fork}"></span></h4>
+                    <h4>Tires: <span th:text="${dh.tires}"></span></h4>
+                    <h4>Brakes: <span th:text="${dh.brakes}"></span></h4>
+                </div>
+                <div class="row ml-5 d-flex flex-column">
+                    <div class="button-holder d-flex justify-content-center">
+                        <button class="btn badge-dark mb-3" type="submit">Delete Downhill Bike</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="mb-5"></div>
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{_shared/head}"/>
+<body>
+<th:block th:include="~{_shared/header}"/>
+<main class="container">
+    <h1>.</h1>
+    <h1 class="text-center mt-3">Edit Downhill Bike</h1>
+    <form class="mx-auto w-100 bg-blur" th:action="@{/bikes/edit/downhill/{id}(id=${downhillId})}" method="post">
+
+        <div class="form-group">
+            <h2 class="text-white">Name</h2>
+            <input type="text" class="form-control mx-auto w-25" name="name" th:value="${dh.name}"/>
+        </div>
+
+        <div class="form-group">
+
+            <div class="row flex-md-row">
+                <div class="col col-sm-1"></div>
+                <h2 class="text-white">Frame:</h2>
+                <div class="ml-lg-5">
+                    <img src="/img/dh-santacruz.jpg" class="border border-secondary"
+                         width="200" height="200"/>
+                    <h3 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="SANTACRUZ" name="frame"
+                               th:checked="${dh.frame ==dh.frame.SANTACRUZ}">Santa Cruz
+                    </h3>
+                </div>
+                <div class="ml-lg-5">
+                    <img src="/img/dh-evil.jpg" class="border border-secondary"
+                         width="200" height="200"/>
+                    <h3 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="EVIL" name="frame"
+                               th:checked="${dh.frame ==dh.frame.EVIL}">Evil
+                    </h3>
+                </div>
+                <div class="ml-lg-5">
+                    <img src="/img/dh-yttues.jpg" class="border border-secondary"
+                         width="200" height="200"/>
+                    <h3 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="YTTUES" name="frame"
+                               th:checked="${dh.frame ==dh.frame.YTTUES}">YT Tues
+                    </h3>
+                </div>
+            </div>
+
+            <div class="row flex-md-row">
+                <div class="col col-sm-1"></div>
+                <h2 class="text-white">Fork:</h2>
+                <div class="ml-lg-5">
+                    <img src="/img/dh-rockshox.jpg" class="border border-secondary"
+                         width="220" height="200"/>
+                    <h3 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="ROCKSHOX" name="fork"
+                               th:checked="${dh.fork ==dh.fork.ROCKSHOX}">RockShox
+                    </h3>
+                </div>
+                <div class="ml-lg-5">
+                    <img src="/img/dh-fox.jpg" class="border border-secondary"
+                         width="120" height="200"/>
+                    <h3 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="FOX" name="fork"
+                               th:checked="${dh.fork ==dh.fork.FOX}">Fox
+                    </h3>
+                </div>
+                <div class="ml-lg-5">
+                    <img src="/img/dh-ohlins.jpg" class="border border-secondary"
+                         width="320" height="200"/>
+                    <h3 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="OHLINS" name="fork"
+                               th:checked="${dh.fork ==dh.fork.OHLINS}">Ohlins
+                    </h3>
+                </div>
+            </div>
+
+            <div class="row flex-md-row">
+                <div class="col col-sm-1"></div>
+                <h2 class="text-white">Tires:</h2>
+                <div class="ml-lg-5">
+                    <img src="/img/dh-maxxis.jpeg" class="border border-secondary"
+                         width="200" height="200"/>
+                    <h3 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="MAXXIS" name="tires"
+                               th:checked="${dh.tires ==dh.tires.MAXXIS}">Maxxis
+                    </h3>
+                </div>
+                <div class="ml-lg-5">
+                    <img src="/img/dh-kaiser.jpg" class="border border-secondary"
+                         width="200" height="200"/>
+                    <h3 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="KAISER" name="tires"
+                               th:checked="${dh.tires ==dh.tires.KAISER}">Kaiser
+                    </h3>
+                </div>
+                <div class="ml-lg-5">
+                    <img src="/img/dh-newton.jpg" class="border border-secondary"
+                         width="200" height="200"/>
+                    <h3 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="NEWTON" name="tires"
+                               th:checked="${dh.tires ==dh.tires.NEWTON}">Newton
+                    </h3>
+                </div>
+            </div>
+
+            <div class="row flex-md-row">
+                <div class="col col-sm-1"></div>
+                <h2 class="text-white">Brakes:</h2>
+                <div class="ml-lg-5">
+                    <img src="/img/shimano-xt.jpg" class="border border-secondary"
+                         width="200" height="200"/>
+                    <h4 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="SHIMANOXT" name="brakes"
+                               th:checked="${dh.brakes ==dh.brakes.SHIMANOXT}">Shimano XT
+                    </h4>
+                </div>
+                <div class="ml-lg-5">
+                    <img src="/img/magura-mt7.png" class="border border-secondary"
+                         width="200" height="200"/>
+                    <h4 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="MAGURAMT7" name="brakes"
+                               th:checked="${dh.brakes == dh.brakes.MAGURAMT7}">Magura MT7
+                    </h4>
+                </div>
+                <div class="ml-lg-5">
+                    <img src="/img/sram-code-r.jpeg" class="border border-secondary"
+                         width="200" height="200"/>
+                    <h4 class="text-white text-left">
+                        <input type="radio" class="ml-lg-5" value="SRAMCODER" name="brakes"
+                               th:checked="${dh.brakes == dh.brakes.SRAMCODER}">Sram Code R
+                    </h4>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button class="btn badge-dark mb-3" type="submit">Edit Downhill Bike</button>
+        </div>
+
+    </form>
+    <h1>.</h1>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>
