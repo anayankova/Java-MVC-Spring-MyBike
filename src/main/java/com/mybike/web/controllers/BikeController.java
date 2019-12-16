@@ -1,9 +1,6 @@
 package com.mybike.web.controllers;
 
-import com.mybike.service.services.BmxService;
-import com.mybike.service.services.CrosscountryService;
-import com.mybike.service.services.DownhillService;
-import com.mybike.service.services.EnduroService;
+import com.mybike.service.services.*;
 import com.mybike.web.controllers.base.BaseController;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,6 +20,7 @@ public class BikeController extends BaseController {
     private final DownhillService downhillService;
     private final CrosscountryService crosscountryService;
     private final BmxService bmxService;
+    private final RoadService roadService;
 
     @GetMapping("")
     public ModelAndView getBikes() {
@@ -45,6 +43,8 @@ public class BikeController extends BaseController {
                 this.crosscountryService.getAllCrosscountryBikesByUsername(username));
         model.addAttribute("bmxbikes",
                 this.bmxService.getAllBmxBikesByUsername(username));
+        model.addAttribute("roadbikes",
+                this.roadService.getAllRoadBikesByUsername(username));
         return "bikes/all-bikes";
     }
 

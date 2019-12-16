@@ -26,4 +26,8 @@ public class Constants {
 
     public final static String BMXID_NOT_FOUND = "Bmx with this id does not exists";
 
+    public final static String ROAD_INVALID = "Invalid road";
+
+    public final static String ROADID_NOT_FOUND = "Road with this id does not exists";
+
 }
