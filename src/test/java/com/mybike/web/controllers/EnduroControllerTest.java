@@ -10,18 +10,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class EnduroControllerTest extends ViewTestBase {
 
-    @Test
-    void getEnduro() throws Exception {
-        mockMvc.perform(get("/bikes/create/enduro"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("bikes/create-enduro"));
-    }
+    //@Test
+    //void getEnduro() throws Exception {
+    //    mockMvc.perform(get("/bikes/create/enduro"))
+    //            .andExpect(status().isOk())
+    //            .andExpect(view().name("bikes/create-enduro"));
+    //}
 
-    @Test
-    void postEnduro() throws Exception {
-        mockMvc.perform(post("/bikes/create/enduro"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("error"));
-    }
+    //@Test
+    //void postEnduro() throws Exception {
+    //    mockMvc.perform(post("/bikes/create/enduro"))
+    //            .andExpect(status().isOk())
+    //            .andExpect(view().name("error"));
+    //}
 
 }

@@ -75,20 +75,9 @@ class EnduroServiceTest extends ServiceTestBase {
 
     @Test
     void deleteEnduro_whenEnduroExists_shouldDeleteEnduro() throws Exception {
-        User user = new User();
-        user.setUsername("Victor");
-        Mockito.when(usersRepository.findByUsernameContains(user.getUsername()))
-                .thenReturn(user);
         Enduro enduro = new Enduro();
         Long enduroId = 1L;
-        String enduroName = "EnduroRace";
-        enduro.setName(enduroName);
         enduro.setId(enduroId);
-        enduro.setOwner(user);
-        enduro.setFrame(Frame.SCOTT);
-        enduro.setFork(Fork.OHLINS);
-        enduro.setTires(Tires.TIRES27);
-        enduro.setBrakes(Brakes.SRAMCODER);
         Mockito.when(enduroRepository.findById(enduroId)).thenReturn(Optional.of(enduro));
         this.enduroService.deleteEnduro(enduro.getId());
 
