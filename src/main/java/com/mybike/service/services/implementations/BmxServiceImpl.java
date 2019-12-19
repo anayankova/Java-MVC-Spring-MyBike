@@ -35,7 +35,7 @@ public class BmxServiceImpl implements BmxService {
     @Override
     public Bmx createBmx(String username, BmxServiceModel model) throws Exception {
         if(model.getName().isEmpty() || model.getName() == null) {
-            throw new Exception(Constants.BMX_INVALID);
+            throw new Exception(Constants.BMXNAME_INVALID);
         }
         User user = usersRepository.findByUsernameContains(username);
         Bmx bmx = bmxFactory.create(model.getName(), model.getFrame(), model.getTires());

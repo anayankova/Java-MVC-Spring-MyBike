@@ -35,7 +35,7 @@ public class EnduroServiceImpl implements EnduroService {
     @Override
     public Enduro createEnduro(String username, EnduroServiceModel model) throws Exception {
         if(model.getName().isEmpty() || model.getName() == null) {
-            throw new Exception(Constants.ENDURO_INVALID);
+            throw new Exception(Constants.ENDURONAME_INVALID);
         }
         User user = usersRepository.findByUsernameContains(username);
         Enduro enduro = enduroFactory.create(model.getName(), model.getFrame(),

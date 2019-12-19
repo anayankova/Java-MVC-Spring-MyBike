@@ -35,7 +35,7 @@ public class DownhillServiceImpl implements DownhillService {
     @Override
     public Downhill createDownhill(String username, DownhillServiceModel model) throws Exception {
         if(model.getName().isEmpty() || model.getName() == null) {
-            throw new Exception(Constants.DH_INVALID);
+            throw new Exception(Constants.DHNAME_INVALID);
         }
         User user = usersRepository.findByUsernameContains(username);
         Downhill downhill = downhillFactory.create(model.getName(), model.getFrame(),

@@ -35,7 +35,7 @@ public class CrosscountryServiceImpl implements CrosscountryService {
     @Override
     public Crosscountry createCrosscountry(String username, CrosscountryServiceModel model) throws Exception {
         if(model.getName().isEmpty() || model.getName() == null) {
-            throw new Exception(Constants.XC_INVALID);
+            throw new Exception(Constants.XCNAME_INVALID);
         }
         User user = usersRepository.findByUsernameContains(username);
         Crosscountry crosscountry = crosscountryFactory.create(model.getName(), model.getFrame(),

@@ -35,7 +35,7 @@ public class RoadServiceImpl implements RoadService {
     @Override
     public Road createRoad(String username, RoadServiceModel model) throws Exception {
         if(model.getName().isEmpty() || model.getName() == null) {
-            throw new Exception(Constants.ROAD_INVALID);
+            throw new Exception(Constants.ROADNAME_INVALID);
         }
         User user = usersRepository.findByUsernameContains(username);
         Road road = roadFactory.create(model.getName(), model.getFrame(), model.getTires());
